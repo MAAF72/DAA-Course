@@ -1,0 +1,96 @@
+html, body {
+    scroll-behavior: smooth;
+    min-height: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background-image: linear-gradient(135deg, #3C8CE7 10%, #00EAFF 100%);
+    font-family: 'Baloo Paaji 2', cursive;
+}
+
+#content {
+    padding-bottom: 150px;
+}
+
+.center-screen {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 100vh;
+}
+
+#message {
+    max-width: 320px;
+}
+
+.box {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    border-radius: 25px;
+    background-color: #f1f1f1;
+    margin: 10px;
+    padding: 20px;
+    width: 400px;
+}
+
+.btn {
+    background-color: #3C8CE7;
+    border: none;
+    margin: 25px;
+    padding: 10px;
+    border-radius: 5px;
+    color: white;
+    letter-spacing: 0.2em
+}
+
+.btn:hover {
+    background-color: #2d67a9;
+}
+
+.btn-next {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+.btn-sort {
+    margin: 0px;
+}
+
+.flex-container {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    -webkit-animation: slide-bottom 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	        animation: slide-bottom 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+.flex-container > .item {
+    background-color: #f1f1f1;
+    margin: 10px;
+    padding: 20px;
+    font-size: 25px;
+    letter-spacing: 5px;
+	
+}
+
+.flex-container > .step {
+    position: absolute;
+    left: 0;
+    font-size: 25px;
+    color: white;
+    margin: 10px;
+    padding: 20px;
+}
+
+.input-text {
+    width: 50%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
