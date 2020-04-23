@@ -167,7 +167,7 @@ $(function() {
     $('body').on('click', '.btn-algoritma', () => {
         $('.modal').show();
         $('.modal-content').show();
-        $('.modal-content > pre').load('merge_sort_queue.py');
+        $('.modal-content > pre').load('algoritma.py');
     });
     
     $(window).click((e) => {
