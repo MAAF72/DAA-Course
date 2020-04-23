@@ -126,11 +126,11 @@ body {
 .modal-content {
     display: none;
     background-color: #fefefe;
-    margin: 15% auto;
+    margin: 5% auto;
     padding: 20px;
     border: none;
     border-radius: 25px;
-    width: 80%;
+    width: 60%;
     -webkit-animation: slide-rotate-hor-t-bck 0.5s cubic-bezier(0.455, 0.030, 0.515, 0.955) reverse both;
             animation: slide-rotate-hor-t-bck 0.5s cubic-bezier(0.455, 0.030, 0.515, 0.955) reverse both;
 }
