@@ -127,7 +127,7 @@ $(function() {
             $('#content').append(`
             <div class="modal">
                 <div class="modal-content">
-                    INI ISI ALGORITMANYA YA BAMBANG
+                    <pre></pre>
                 </div>
             </div>
             `);
@@ -167,7 +167,7 @@ $(function() {
     $('body').on('click', '.btn-algoritma', () => {
         $('.modal').show();
         $('.modal-content').show();
-        $('.modal-content').load('merge_sort_queue.py');
+        $('.modal-content > pre').load('merge_sort_queue.py');
     });
     
     $(window).click((e) => {
