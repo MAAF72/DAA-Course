@@ -1,7 +1,16 @@
 '''
+Input : Sebuah array
+Deskripsi : Membagi inputan menjadi kumpulan array yang memiliki panjang 1 dan memasukkannya kedalam queue
+Output : Sebuah queue yang berisi n buah array, dimana n adalah panjang array input
+Kompleksitas : O(panjang array input)
+'''
+def divide(arr):
+    return [[i] for i in arr]
+    
+'''
 Input : 2 buah array
 Deskripsi : Menggabungkan 2 buah array inputan menjadi 1 array yang terurut
-Output : 1 buah array terurut yang merupakan gabungan dari 2 buah array inputan
+Output : Sebuah array terurut yang merupakan gabungan dari 2 buah array inputan
 Kompleksitas : O(panjang array 1 + panjang array 2)
 '''
 def merge(arr1, arr2): 
@@ -20,10 +29,11 @@ def merge(arr1, arr2):
     
 '''
 Input : queue of array
+Base Case : Queue hanya berisi 1 array
 Deskripsi : Mengeluarkan 2 array dari queue lalu menggabungkan dan mengurutkannya, kemudian simpan kedalam queue of array baru. 
-            Lakukan sampai queue kosong. Setelah itu rekursifkan lagi hingga queue hanya berisi 1 array saja
+            Lakukan sampai panjang queue < 2. Jika queue tersisa 1 array, masukkan array tersebut kedalam queue of array baru tadi. Setelah itu rekursifkan lagi
 Output : sebuah queue of array baru
-Kompleksitas : O(total panjang array)
+Kompleksitas : O(panjang queue / 2) * panjang array input
 '''
 def merge_sort(queue):
     if len(queue) == 1:
@@ -41,21 +51,17 @@ def merge_sort(queue):
     
 arr = [10, 8, 7, 6, 5, 4, 3, 2, 1, 0, -999, -10]
 
-queue = [[i] for i in arr]
-
-
-print(merge_sort(queue))
+print(merge_sort(divide(arr)))
 
 
 # iterative version
-# while len(queue) != 1:
+# while len(queue) > 1:
     # temp = []
-    # i = 0
-    # while i < len(queue) - 1:
-        # temp.append(merge(queue[i], queue[i + 1]))
-        # i += 2
+    # while len(queue) <= 2:
+        # temp.append(merge(queue.pop(0), queue.pop(0)))
     
-    # if len(queue) % 2 != 0:
-        # temp.append(queue[-1])
+    # if len(queue) == 1:
+        # temp.append(queue.pop(0))
     
     # queue = temp
+# print(queue.pop(0))

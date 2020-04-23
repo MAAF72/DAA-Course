@@ -89,6 +89,7 @@ $(function() {
         stepList = new Map();
         currStep = 1;
         var queue = [];
+        //divide
         arr.forEach(e => {
             queue.push([e]);
         });
@@ -115,10 +116,24 @@ $(function() {
                 return;
             }
         }
+        if (arr.length < 2) {
+            return alert('Lu mau gua pukul?');
+            
+        }
         
         $('#content').fadeOut(400, () => {
             $('#content').remove();
             $('body').prepend($('<div/>', { 'id': 'content' }));
+            $('#content').append(`
+            <div class="modal">
+                <div class="modal-content">
+                    INI ISI ALGORITMANYA YA BAMBANG
+                </div>
+            </div>
+            `);
+            $('#content').append(`
+            <button class="btn btn-algoritma">Lihat Algoritma</button>
+            `);
             $('#content').append(`
             <div id="panel" class="box">
                 <p id="message">Klik next untuk melihat visualisasi algoritma merge sort menggunakan queue</p>
@@ -129,6 +144,7 @@ $(function() {
             $('#visualization').append(visualizeStep('Initial', [arr]));
             solve(arr);
         });
+        
         
     });
     
@@ -148,5 +164,17 @@ $(function() {
         currStep++;
     });
     
+    $('body').on('click', '.btn-algoritma', () => {
+        $('.modal').show();
+        $('.modal-content').show();
+        $('.modal-content').load('merge_sort_queue.py');
+    });
+    
+    $(window).click((e) => {
+        if ($(e.target).is('.modal')) {
+            $('.modal-content').hide();
+            $('.modal').fadeOut();
+        }
+    });
     
 });

@@ -30,3 +30,39 @@
             transform: translateY(0);
   }
 }
+
+
+/**
+ * ----------------------------------------
+ * animation slide-rotate-hor-t-bck
+ * ----------------------------------------
+ */
+@-webkit-keyframes slide-rotate-hor-t-bck {
+  0% {
+    -webkit-transform: translateY(0) translateZ(0) rotateX(0deg);
+            transform: translateY(0) translateZ(0) rotateX(0deg);
+    -webkit-transform-origin: top center;
+            transform-origin: top center;
+  }
+  100% {
+    -webkit-transform: translateY(-150px) translateZ(-230px) rotateX(-90deg);
+            transform: translateY(-150px) translateZ(-230px) rotateX(-90deg);
+    -webkit-transform-origin: top center;
+            transform-origin: top center;
+  }
+}
+
+@keyframes slide-rotate-hor-t-bck {
+  0% {
+    -webkit-transform: translateY(0) translateZ(0) rotateX(0deg);
+            transform: translateY(0) translateZ(0) rotateX(0deg);
+    -webkit-transform-origin: top center;
+            transform-origin: top center;
+  }
+  100% {
+    -webkit-transform: translateY(-150px) translateZ(-230px) rotateX(-90deg);
+            transform: translateY(-150px) translateZ(-230px) rotateX(-90deg);
+    -webkit-transform-origin: top center;
+            transform-origin: top center;
+  }
+}

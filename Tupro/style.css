@@ -39,17 +39,20 @@ body {
 }
 
 .btn {
-    background-color: #3C8CE7;
     border: none;
     margin: 25px;
     padding: 10px;
     border-radius: 5px;
-    color: white;
     letter-spacing: 0.2em
 }
 
-.btn:hover {
+.btn-next:hover, .btn-sort:hover {
     background-color: #2d67a9;
+}
+
+.btn-next, .btn-sort {
+    background-color: #3C8CE7;
+    color: white;
 }
 
 .btn-next {
@@ -60,6 +63,19 @@ body {
 
 .btn-sort {
     margin: 0px;
+}
+
+.btn-algoritma {
+    position: absolute;
+    right: 0;
+    background-color: white;
+    color: black;
+    z-index: 1;
+}
+
+.btn-algoritma:hover {
+    background-color: #3C8CE7;
+    color: white;
 }
 
 .flex-container {
@@ -93,4 +109,28 @@ body {
     padding: 12px 20px;
     margin: 8px 0;
     box-sizing: border-box;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+    display: none;
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: none;
+    border-radius: 25px;
+    width: 80%;
+    -webkit-animation: slide-rotate-hor-t-bck 0.5s cubic-bezier(0.455, 0.030, 0.515, 0.955) reverse both;
+            animation: slide-rotate-hor-t-bck 0.5s cubic-bezier(0.455, 0.030, 0.515, 0.955) reverse both;
 }
