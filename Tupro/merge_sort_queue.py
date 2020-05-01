@@ -1,13 +1,4 @@
 '''
-Input : Sebuah array
-Deskripsi : Membagi inputan menjadi kumpulan array yang memiliki panjang 1 dan memasukkannya kedalam queue
-Output : Sebuah queue yang berisi n buah array, dimana n adalah panjang array input
-Kompleksitas : O(panjang array input)
-'''
-def divide(arr):
-    return [[i] for i in arr]
-    
-'''
 Input : 2 buah array
 Deskripsi : Menggabungkan 2 buah array inputan menjadi 1 array yang terurut
 Output : Sebuah array terurut yang merupakan gabungan dari 2 buah array inputan
@@ -28,40 +19,29 @@ def merge(arr1, arr2):
     return arr3
     
 '''
-Input : queue of array
-Base Case : Queue hanya berisi 1 array
-Deskripsi : Mengeluarkan 2 array dari queue lalu menggabungkan dan mengurutkannya, kemudian simpan kedalam queue of array baru. 
-            Lakukan sampai panjang queue < 2. Jika queue tersisa 1 array, masukkan array tersebut kedalam queue of array baru tadi. Setelah itu rekursifkan lagi
-Output : sebuah queue of array baru
-Kompleksitas : O(panjang queue / 2) * panjang array input
+Input : array
+Deskripsi : 1. Membagi array menjadi kumpulan array yang memiliki panjang 1 dan memasukkannya kedalam queue utama.
+            2. Kemudian mengeluarkan 2 array dari queue utama lalu menggabungkan dan mengurutkannya, kemudian simpan kedalam queue of array baru. 
+            3. Lakukan sampai panjang queue utama < 2. Jika queue utama tersisa 1 array, masukkan array tersebut kedalam queue of array baru tadi.
+            4. Isi queue utama dengan isi dari queue of array baru tadi
+            5. Lakukan proses 2 - 4 hingga queue utama hanya tersisa 1 array, dijamin array sudah terurut
+            6. Return array dari queue utama tersebut
+Output : array yang sudah terurut
+Kompleksitas : log_2(n) * n => O(n * log(n)), dimana n adalah panjang array
 '''
-def merge_sort(queue):
-    if len(queue) == 1:
-        return queue.pop(0)
-    
-    temp = []
-    
-    while len(queue) >= 2:
-        temp.append(merge(queue.pop(0), queue.pop(0)))
-    
-    if len(queue) == 1:
-        temp.append(queue.pop(0))
-    
-    return merge_sort(temp)
+def merge_sort(arr):
+    queue = [[i] for i in arr]
+    while len(queue) > 1:
+        temp = []
+        while len(queue) > 1:
+            temp.append(merge(queue.pop(0), queue.pop(0)))
+
+        if len(queue) == 1:
+            temp.append(queue.pop(0))
+        
+        queue = temp
+    return queue.pop(0)
     
 arr = [10, 8, 7, 6, 5, 4, 3, 2, 1, 0, -999, -10]
 
-print(merge_sort(divide(arr)))
-
-
-# iterative version
-# while len(queue) > 1:
-    # temp = []
-    # while len(queue) <= 2:
-        # temp.append(merge(queue.pop(0), queue.pop(0)))
-    
-    # if len(queue) == 1:
-        # temp.append(queue.pop(0))
-    
-    # queue = temp
-# print(queue.pop(0))
+print(merge_sort(arr))

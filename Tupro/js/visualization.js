@@ -1,8 +1,3 @@
-/*
-1, 20, 90, -1, -999
-10, 8, 7, 6, 5, 4, 3, 2, 1, 0, -999, -10
-8, 7, 6, 5, 4, 3, 2, 1
-*/
 $(function() {
     var arr;
     var stepList;
@@ -34,7 +29,7 @@ $(function() {
                 if (typeof value === 'object') {
                     tempObj[key] = deepCopyObject(value);
                 } else {
-                    tempObj[key] = value
+                    tempObj[key] = value;
                 }
             }
         }
@@ -59,42 +54,37 @@ $(function() {
         return arr3;
     }
     
-    function mergeSort(deep, queue) {
-        var stage = 'Combine';
-        if (deep == 1) {
-            stage = 'Divide';
+    function mergeSort(arr) {
+        var queue = [];
+        var deep = 0;
+        stepList.set(deep++, ['Initial', [arr]]);
+        
+        for (var i = 0; i < arr.length; i++) {
+            queue.push([arr[i]]);
         }
         
-        stepList.set(deep, [stage, deepCopy(queue)]);
-        
-        if (queue.length == 1) {
-            return;
-        }
-        
-        var new_queue = [];
+        stepList.set(deep++, ['Divide', deepCopy(queue)]);
         
         while (queue.length > 1) {
-            new_queue.push(merge(queue.shift(), queue.shift()));
+            var new_queue = [];
+        
+            while (queue.length > 1) {
+                new_queue.push(merge(queue.shift(), queue.shift()));
+            }
+            
+            if (queue.length == 1) {
+                new_queue.push(queue.shift());
+            }
+            
+            queue = new_queue;
+            stepList.set(deep++, ['Combine', deepCopy(queue)]);
         }
-        
-        if (queue.length == 1) {
-            new_queue.push(queue.shift())
-        }
-        
-        
-        mergeSort(deep + 1, new_queue);
     }
     
     function solve() {
         stepList = new Map();
         currStep = 1;
-        var queue = [];
-        //divide
-        arr.forEach(e => {
-            queue.push([e]);
-        });
-        stepList.set(0, ['Initial', [arr]]);
-        mergeSort(1, queue);
+        mergeSort(arr);
     }
     
     function visualizeStep(stage, items) {
@@ -118,7 +108,6 @@ $(function() {
         }
         if (arr.length < 2) {
             return alert('Lu mau gua pukul?');
-            
         }
         
         $('#content').fadeOut(400, () => {
@@ -167,7 +156,7 @@ $(function() {
     $('body').on('click', '.btn-algoritma', () => {
         $('.modal').show();
         $('.modal-content').show();
-        $('.modal-content > pre').load('algoritma.py');
+        $('.modal-content > pre').load('code/merge_sort.py');
     });
     
     $(window).click((e) => {
