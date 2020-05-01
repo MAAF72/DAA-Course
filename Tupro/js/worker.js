@@ -55,14 +55,14 @@ function calculateMerge(arr) {
     }
     mergeSort(queue);
     var end = performance.now();
-    return parseFloat((end - start).toFixed(3));
+    return end - start;
 }
 
 function calculateBubble(arr) {
     var start = performance.now();
     bubbleSort(arr);
     var end = performance.now();
-    return parseFloat((end - start).toFixed(3));
+    return end - start;
 }
 
 self.addEventListener('message', (e) => {

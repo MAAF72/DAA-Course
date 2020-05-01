@@ -19,7 +19,6 @@ $(function() {
                 break;
             }
         }
-        console.log(data);
         
         if (!duplicate) {
             data.push(e.data);
@@ -38,8 +37,8 @@ $(function() {
                     return `
                     <div>The number of trials is ${row.count}</div>
                     <div>The number of element is ${row.num}</div>
-                    <div style="color: rgb(11, 98, 164);">Merge Sort takes ${row.merge} ms</div>
-                    <div style="color: rgb(122, 146, 163);">Bubble Sort takes ${row.bubble} ms</div>
+                    <div style="color: rgb(11, 98, 164);">Merge Sort takes ${row.merge.toFixed(3)} ms</div>
+                    <div style="color: rgb(122, 146, 163);">Bubble Sort takes ${row.bubble.toFixed(3)} ms</div>
                     `;
                 }
             });
