@@ -68,8 +68,6 @@ function calculateBubble(arr) {
 self.addEventListener('message', (e) => {
     var arr = Array.from({length: e.data}, () => getRandInteger(Number.MIN_VALUE, Number.MAX_VALUE));
     var arr2 = arr.slice();
-    console.log(arr);
-    console.log(arr2);
     data = {
         num: e.data,
         merge: calculateMerge(arr2),

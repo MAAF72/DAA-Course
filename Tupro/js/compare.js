@@ -11,7 +11,7 @@ $(function() {
     worker.addEventListener('message', (e) => {
         var duplicate = false;
         for (var i = 0; i < data.length; i++) {
-            if (data[i].num == e.data.num) {
+            if (data[i].num === e.data.num) {
                 data[i].merge = ((data[i].merge * data[i].count) + e.data.merge) / (data[i].count + 1);
                 data[i].bubble = ((data[i].bubble * data[i].count) + e.data.bubble) / (data[i].count + 1);
                 data[i].count++;
@@ -19,6 +19,7 @@ $(function() {
                 break;
             }
         }
+        console.log(data);
         
         if (!duplicate) {
             data.push(e.data);
