@@ -27,7 +27,7 @@ Deskripsi : 1. Membagi array menjadi kumpulan array yang memiliki panjang 1 dan 
             5. Lakukan proses 2 - 4 hingga queue utama hanya tersisa 1 array, dijamin array sudah terurut
             6. Return array dari queue utama tersebut
 Output : array yang sudah terurut
-Kompleksitas : log_2(n) * n => O(n * log(n)), dimana n adalah panjang array
+Kompleksitas : n * log_2(n) => O(n * log(n)), dimana n adalah panjang array
 '''
 def merge_sort(arr):
     queue = [[i] for i in arr]
