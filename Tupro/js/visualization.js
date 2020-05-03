@@ -1,4 +1,8 @@
 $(function() {
+    $(".loader").fadeOut(1000, () => {
+        $("#content").fadeIn(1000);
+    });
+    
     var arr;
     var stepList;
     var currStep;

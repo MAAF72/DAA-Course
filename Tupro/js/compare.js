@@ -40,7 +40,7 @@ $(function() {
                 hoverCallback: (index, options, content, row) => {
                     return `
                     <div>The number of trials is ${row.count}</div>
-                    <div>The number of element is ${row.num}</div>
+                    <div>The number of elements is ${row.num}</div>
                     <div style="color: rgb(11, 98, 164);">Merge Sort takes ${row.merge.toFixed(3)} ms</div>
                     <div style="color: rgb(122, 146, 163);">Bubble Sort takes ${row.bubble.toFixed(3)} ms</div>
                     `;
@@ -63,6 +63,9 @@ $(function() {
         var num = parseInt($('#number').val());
         if (num <= 0) {
             return alert('Lu mau gua pukul?');
+        }
+        if (num > 10000) {
+            return alert('Maksimal 10^4 aja gan, lebih dari itu ngehang browser dan device kentang anda :))');
         }
         Swal.fire({
             title: 'Please Wait',
