@@ -3,6 +3,10 @@ $(function() {
         alert('Your browser doesn\'t have support for Web Worker, this site can\'t work as it should!');
     }
     
+    $(".loader").fadeOut(1000, () => {
+        $("#content").fadeIn(1000);
+    });
+    
     var data = [];
     var compareBar;
     

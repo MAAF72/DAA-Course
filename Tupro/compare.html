@@ -7,7 +7,10 @@
         <link href="https://fonts.googleapis.com/css2?family=Baloo+Paaji+2:wght@500&display=swap" rel="stylesheet">
     </head>
     <body>
-        <div id="content">
+        <div class="loader">
+            <div class="loading"></div>
+        </div>
+        <div id="content" style="display: none">
             <center>
                 <h2>Time Execution comparison(in ms) between Merge Sort and Bubble Sort</h2>
                 <div class="graph">
@@ -23,7 +26,7 @@
                     <button id="btn-merge" class="btn">Show Merge Sort Algorithm!</button>
                 </div>
                 <div id="input-field">
-                    <input class="input-text" id="number" type="number" min="10" max="10000" step="10" placeholder="#element">
+                    <input class="input-text" id="number" type="number" min="10" max="10000" step="10" placeholder="# Element">
                     <button id="btn-compare" class="btn">Compare!</button>
                 </div>
             </div>
