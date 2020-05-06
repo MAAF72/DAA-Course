@@ -70,17 +70,17 @@ $(function() {
         stepList.set(deep++, ['Divide', deepCopy(queue)]);
         
         while (queue.length > 1) {
-            var new_queue = [];
+            var temp = [];
         
             while (queue.length > 1) {
-                new_queue.push(merge(queue.shift(), queue.shift()));
+                temp.push(merge(queue.shift(), queue.shift()));
             }
             
             if (queue.length == 1) {
-                new_queue.push(queue.shift());
+                temp.push(queue.shift());
             }
             
-            queue = new_queue;
+            queue = temp;
             stepList.set(deep++, ['Combine', deepCopy(queue)]);
         }
     }

@@ -1,38 +1,42 @@
-function getRandInteger(min, max) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-}
+importScripts('queue.js');
 
 function merge(arr1, arr2) {
     var arr3 = [];
-    
-    while (arr1.length > 0 & arr2.length > 0) {
-        arr3.push(arr1[0] <= arr2[0] ? arr1.shift() : arr2.shift());
+    var i = 0;
+    var j = 0;
+    while (i < arr1.length & j < arr2.length) {
+        arr3.push(arr1[i] <= arr2[j] ? arr1[i++] : arr2[j++]);
     }
     
-    while (arr1.length > 0) {
-        arr3.push(arr1.shift());
+    while (i < arr1.length) {
+        arr3.push(arr1[i++]);
     }
     
-    while (arr2.length > 0) {
-        arr3.push(arr2.shift());
+    while (j < arr2.length) {
+        arr3.push(arr2[j++]);
     }
     
     return arr3;
 }
 
-function mergeSort(queue) {
-    while (queue.length > 1) {
-        var new_queue = [];
-        while (queue.length > 1) {
-            new_queue.push(merge(queue.shift(), queue.shift()));
-        }
-        
-        if (queue.length == 1) {
-            new_queue.push(queue.shift());
-        }
-        
-        queue = new_queue;
+function mergeSort(arr) {
+    var queue = new Queue();
+    for (var i = 0; i < arr.length; i++) {
+        queue.push([arr[i]]);
     }
+    while (queue.size() > 1) {
+        var temp = new Queue();
+        while (queue.size() > 1) {
+            temp.push(merge(queue.pop(), queue.pop()));
+        }
+        
+        if (queue.size() == 1) {
+            temp.push(queue.pop());
+        }
+        
+        queue = temp;
+    }
+    return queue.pop();
 }
 
 function bubbleSort(arr) {
@@ -43,35 +47,28 @@ function bubbleSort(arr) {
             }
         }
     }
-    return;
+    return arr;
 }
 
 function calculateMerge(arr) {
     var start = performance.now();
-    var queue = [];
-    //divide
-    for (var i = 0; i < arr.length; i++) {
-        queue.push([arr[i]]);
-    }
-    mergeSort(queue);
+    arr = mergeSort(arr);
     var end = performance.now();
     return end - start;
 }
 
 function calculateBubble(arr) {
     var start = performance.now();
-    bubbleSort(arr);
+    arr = bubbleSort(arr);
     var end = performance.now();
     return end - start;
 }
 
 self.addEventListener('message', (e) => {
-    var arr = Array.from({length: e.data}, () => getRandInteger(Number.MIN_VALUE, Number.MAX_VALUE));
-    var arr2 = arr.slice();
     data = {
-        num: e.data,
-        merge: calculateMerge(arr2),
-        bubble: calculateBubble(arr)
+        num: e.data.num,
+        merge: calculateMerge(e.data.arrMerge),
+        bubble: calculateBubble(e.data.arrBubble)
     }
     self.postMessage(data);
 }, false);

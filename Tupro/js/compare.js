@@ -1,4 +1,20 @@
 $(function() {
+    function getRandInteger(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+    
+    function showLoading() {
+        Swal.fire({
+            title: 'Please Wait',
+            allowEscapeKey: false,
+            allowOutsideClick: false,
+            showConfirmButton: false,
+            onOpen: () => {
+                Swal.showLoading();
+            }
+        });
+    }
+
     if (typeof(Worker) === 'undefined') {
         alert('Your browser doesn\'t have support for Web Worker, this site can\'t work as it should!');
     }
@@ -67,19 +83,17 @@ $(function() {
         if (num > 10000) {
             return alert('Maksimal 10^4 aja gan, lebih dari itu ngehang browser dan device kentang anda :))');
         }
-        Swal.fire({
-            title: 'Please Wait',
-            allowEscapeKey: false,
-            allowOutsideClick: false,
-            showConfirmButton: false,
-            onOpen: () => {
-                Swal.showLoading();
-            }
-        })
-        worker.postMessage(num);
+        showLoading();
+        
+        
+        var arrOri = Array.from({length: num}, () => getRandInteger(Number.MIN_VALUE, Number.MAX_VALUE));
+        var arrMerge = arrOri.slice();
+        var arrBubble = arrOri.slice();
+        worker.postMessage({num: num, arrMerge: arrMerge, arrBubble: arrBubble});
     });
    
     $('#btn-bubble').click(() => {
+        showLoading();
         $.get('code/bubble_sort.py', (data) => {
             Swal.fire({
                 title: 'Bubble Sort Algorithm',
@@ -90,6 +104,7 @@ $(function() {
     });
    
     $('#btn-merge').click(() => {
+        showLoading();
         $.get('code/merge_sort.py', (data) => {
             Swal.fire({
                 title: 'Merge Sort Algorithm',
